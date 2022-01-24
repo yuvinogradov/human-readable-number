@@ -1,6 +1,9 @@
 module.exports = function toReadable (number) {
-  const digits = {
+      const numbersTo99 = {
       0: 'zero',
+      1: 'one',
+      2: 'two',
+      3: 'three',
       1: 'one',
       2: 'two',
       3: 'three',
@@ -22,16 +25,36 @@ module.exports = function toReadable (number) {
       19: 'nineteen',
       20: 'twenty',
       30: 'thirty',
-      40: 'fourty',
+      40: 'forty',
       50: 'fifty',
       60: 'sixty',
       70: 'seventy',
       80: 'eighty',
       90: 'ninety',
-      
-  }
-  
-  const decs = {
-      
-  }
+    }
+
+    function numbersTo99Maker(){ 
+     for (let i = 21; i<=99; i++){
+     const tmpArr = i.toString().split('')
+     if(tmpArr[1]!=0){
+      numbersTo99[i] = `${numbersTo99[tmpArr[0]*10]}-${numbersTo99[tmpArr[1]]}`
+     }
+     }
+    }
+
+    function upToThousandToStr(num){
+      let hundreds = Math.trunc(num/100)
+      let rem = num - hundreds*100
+      let res = ''
+      if (hundreds >= 1) res = `${numbersTo99[hundreds]} hundred`
+
+      //if(hundreds >= 1 && rem > 0) res = `${res} and ${numbersTo99[rem]}`
+      if(hundreds >= 1 && rem > 0) res = `${res} ${numbersTo99[rem]}`
+      if(hundreds === 0) res = `${numbersTo99[rem]}`
+
+      return res
+    }
+    
+    return upToThousandToStr(number)
+   
 }
