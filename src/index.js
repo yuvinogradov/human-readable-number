@@ -55,6 +55,8 @@ module.exports = function toReadable (number) {
       return res
     }
     
+    numbersTo99Maker()
+    
     return upToThousandToStr(number)
    
 }
