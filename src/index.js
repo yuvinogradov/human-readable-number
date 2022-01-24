@@ -37,7 +37,7 @@ module.exports = function toReadable (number) {
      for (let i = 21; i<=99; i++){
      const tmpArr = i.toString().split('')
      if(tmpArr[1]!=0){
-      numbersTo99[i] = `${numbersTo99[tmpArr[0]*10]}-${numbersTo99[tmpArr[1]]}`
+      numbersTo99[i] = `${numbersTo99[tmpArr[0]*10]} ${numbersTo99[tmpArr[1]]}`
      }
      }
     }
